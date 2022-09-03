@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Freewheel Unicycle`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Carl Hunt`,
+      summary: `Freewheel Unicyclist, juggler, and unicycle basketball player`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Thoughts on and experiences with juggling and unicycling`,
+    siteUrl: `https://freewheeluniycle.com`,
     social: {
-      twitter: `kylemathews`,
+      github: `cwhunt`,
     },
   },
   plugins: [

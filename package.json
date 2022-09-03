@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "freewheelunicycle-com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Thoughts on and experiences with juggling and unicycling",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Carl Hunt",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/cwhunt/freewheelunicycle-com/issues"
   },
   "dependencies": {
     "gatsby": "^4.22.0",
@@ -30,14 +30,14 @@
   "devDependencies": {
     "prettier": "^2.7.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://freewheelunicycle.com",
   "keywords": [
     "gatsby"
   ],
   "license": "0BSD",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/cwhunt/freewheelunicycle-com.git"
   },
   "scripts": {
     "build": "gatsby build",
