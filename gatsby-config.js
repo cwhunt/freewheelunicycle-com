@@ -7,9 +7,20 @@ module.exports = {
     },
     description: `Thoughts on and experiences with juggling and unicycling`,
     siteUrl: `https://freewheeluniycle.com`,
-    social: {
-      github: `cwhunt`,
-    },
+    socialLinks: [
+      {
+        name: `YouTube`,
+        url: `https://www.youtube.com/channel/UCJBBptvGpB6DpR8Y50Ijing`,
+      },
+      {
+        name: `GitHub`,
+        url: `https://github.com/cwhunt`,
+      },
+      {
+        name: `Unicyclist.com`,
+        url: `https://unicyclist.com/u/waaalrus`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-image`,
