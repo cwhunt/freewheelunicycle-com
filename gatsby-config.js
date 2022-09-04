@@ -61,6 +61,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-feed`,
