@@ -1,6 +1,9 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
+// Utilities
+import kebabCase from "lodash/kebabCase"
+
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -27,6 +30,15 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+          <ul>
+            {post.frontmatter.tags.map(tag => (
+              <li key={tag}>
+                <Link to={`/tags/${kebabCase(tag)}/`}>
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
         <hr />
         <footer>
           <Bio />
@@ -102,6 +114,7 @@ export const pageQuery = graphql`
           }
         }
         imageAlt
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

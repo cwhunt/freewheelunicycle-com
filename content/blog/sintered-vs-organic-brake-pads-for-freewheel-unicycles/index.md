@@ -1,6 +1,7 @@
 ---
 title: Sintered vs. organic brake pads for freewheel unicycles
 date: 2022-08-22
+tags: ["freewheel-unicycling"]
 image: ./pigpen-with-mad4one-freewheel-unicycle.jpg
 imageAlt: Pigpen with Mad4One Freewheel Unicycle
 ---
