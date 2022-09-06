@@ -20,7 +20,7 @@ const PageTemplate = ({
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{page.frontmatter.title}</h1>
+          <h2 itemProp="headline">{page.frontmatter.title}</h2>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: page.html }}

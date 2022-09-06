@@ -8,30 +8,21 @@ const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
 
   header = (
     <>
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-      <div>
-      { menuLinks ? 
-      <nav>
-        <ul style={{ display: "flex", flex: 1 }}>
+      <nav class="navbar">
+        <h1 class="nav-brand main-heading">{title}</h1>
+        <ul class="nav-links">
           {menuLinks.map(link => (
             <li
               key={link.name}
-              style={{
-                listStyleType: `none`,
-                padding: `1rem`,
-              }}
+              class="nav-item"
             >
-              <Link style={{ color: `black` }} to={link.link}>
+              <Link class="nav-link" to={link.link}>
                 {link.name}
               </Link>
             </li>
           ))}
         </ul>
-      </nav> : <span />
-      }
-    </div>
+      </nav>
     </>
   )
 
@@ -41,7 +32,7 @@ const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
       <main>{children}</main>
       <footer>
         {socialLinks
-        ? socialLinks.map((platform, i, arr) => (
+          ? socialLinks.map((platform, i, arr) => (
             <React.Fragment key={platform.url}>
               <a
                 href={platform.url}
@@ -57,7 +48,7 @@ const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
               )}
             </React.Fragment>
           ))
-        : null}
+          : null}
       </footer>
     </div>
   )

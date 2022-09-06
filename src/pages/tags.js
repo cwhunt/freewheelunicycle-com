@@ -24,7 +24,7 @@ const TagsPage = ({data, location}) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">Tags</h1>
+          <h2 itemProp="headline">Tags</h2>
         </header>
         <section>
           <ul>

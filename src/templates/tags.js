@@ -25,7 +25,7 @@ const Tags = ({ pageContext, data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{tagHeader}</h1>
+          <h2 itemProp="headline">{tagHeader}</h2>
         </header>
         <section>
           <ul>

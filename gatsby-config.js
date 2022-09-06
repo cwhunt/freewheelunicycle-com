@@ -9,11 +9,15 @@ module.exports = {
     siteUrl: `https://freewheeluniycle.com`,
     menuLinks:[
       {
-         name:'home',
-         link:'/'
+        name:'Home',
+        link:'/'
       },
       {
-         name:'about',
+         name:'Blog',
+         link:'/blog'
+      },
+      {
+         name:'About',
          link:'/about'
       }
     ],
