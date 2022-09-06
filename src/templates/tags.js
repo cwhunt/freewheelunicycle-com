@@ -11,7 +11,7 @@ import Layout from "../components/layout"
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${
+  const tagHeader = `${totalCount} item${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
   const siteTitle = data.site.siteMetadata?.title || `Title`

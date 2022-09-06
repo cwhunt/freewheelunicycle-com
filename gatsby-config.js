@@ -17,8 +17,12 @@ module.exports = {
          link:'/blog'
       },
       {
-         name:'About',
-         link:'/about'
+        name:'Videos',
+        link:'/videos'
+      },
+      {
+        name:'About',
+        link:'/about'
       }
     ],
     socialLinks: [
@@ -59,6 +63,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/pages`,
         name: `pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/videos`,
+        name: `videos`,
       },
     },
     {

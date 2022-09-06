@@ -9,7 +9,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post,  },
+  data: { previous, next, site, markdownRemark: post, },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
@@ -30,15 +30,18 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-          <ul>
-            {post.frontmatter.tags.map(tag => (
-              <li key={tag}>
-                <Link to={`/tags/${kebabCase(tag)}/`}>
-                  {tag}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {post.frontmatter.tags.length &&
+          <div style={{ fontWeight: 'bold' }}>
+            <p>Tags: {post.frontmatter.tags.map((tag, i, arr) => (<>
+              <Link to={`/tags/${kebabCase(tag)}/`}>
+                {tag}
+              </Link>
+              <span>
+                {arr.length === i + 1 ? `` : `, `}
+              </span>
+            </>))} </p>
+          </div>
+        }
         <hr />
         <footer>
           <Bio />

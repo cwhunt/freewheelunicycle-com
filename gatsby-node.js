@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        blogPosts: allMarkdownRemark(
           sort: {fields: [frontmatter___date], order: ASC}
           filter: {fileAbsolutePath: {regex: "//blog//"}}
           limit: 1000
@@ -24,6 +24,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               tags
+            }
+          }
+        }
+        pages: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: ASC}
+          filter: {fileAbsolutePath: {regex: "//pages//"}}
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+        videos: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: ASC}
+          filter: {fileAbsolutePath: {regex: "//videos//"}}
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
             }
           }
         }
@@ -44,7 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.blogPosts.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -80,38 +104,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // Define a template for page
-  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  // Define a template for a video
+  const videoTemplate = path.resolve(`./src/templates/video.js`)
+  const videos = result.data.videos.nodes
 
-  // Get all markdown blog posts sorted by date
-  const pagesResult = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: ASC}
-          filter: {fileAbsolutePath: {regex: "//pages//"}}
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
+  // Create videos pages
+  // But only if there's at least one markdown file found at "content/videos" (defined in gatsby-config.js)
+  // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (pagesResult.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      pagesResult.errors
-    )
-    return
+  if (videos.length > 0) {
+    videos.forEach((video) => {
+      createPage({
+        path: video.fields.slug,
+        component: videoTemplate,
+        context: {
+          id: video.id
+        },
+      })
+    })
   }
 
-  const pages = pagesResult.data.allMarkdownRemark.nodes
+  // Define a template for a page
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const pages = result.data.pages.nodes
 
   // Create pages
   // But only if there's at least one markdown file found at "content/pages" (defined in gatsby-config.js)
@@ -128,6 +143,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
