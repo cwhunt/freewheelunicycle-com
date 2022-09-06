@@ -33,6 +33,15 @@ module.exports = {
     ],
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: ['G-PR2D4QCF7G'],
+        pluginConfig: {
+          head: true
+        }
+      }
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
