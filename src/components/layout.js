@@ -8,7 +8,8 @@ const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
 
   header = (
     <>
-      <nav class="navbar">
+      { menuLinks? 
+        <nav class="navbar">
         <h1 class="nav-brand main-heading">{title}</h1>
         <ul class="nav-links">
           {menuLinks.map(link => (
@@ -22,7 +23,8 @@ const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> : <span />
+    }
     </>
   )
 

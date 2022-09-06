@@ -13,7 +13,6 @@ import Layout from "../components/layout"
 const TagsPage = ({data, location}) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const menuLinks = data.site.siteMetadata.menuLinks
-  const socialLinks = data.site.siteMetadata.socialLinks
   const group = data.allMarkdownRemark.group
 
   return (
