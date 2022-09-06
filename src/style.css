@@ -319,6 +319,14 @@ a:focus {
   margin-bottom: var(--spacing-8);
 }
 
+ul {
+  list-style-position: inside;
+}
+
+ol {
+  list-style-position: inside;
+}
+
 /* Media queries */
 
 @media (max-width: 42rem) {

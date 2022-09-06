@@ -7,6 +7,16 @@ module.exports = {
     },
     description: `Thoughts on and experiences with juggling and unicycling`,
     siteUrl: `https://freewheeluniycle.com`,
+    menuLinks:[
+      {
+         name:'home',
+         link:'/'
+      },
+      {
+         name:'about',
+         link:'/about'
+      }
+    ],
     socialLinks: [
       {
         name: `YouTube`,
@@ -29,6 +39,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pages`,
+        name: `pages`,
       },
     },
     {

@@ -6,13 +6,14 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post },
+  data: { previous, next, site, markdownRemark: post,  },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
+  const menuLinks = site.siteMetadata.menuLinks
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} menuLinks={menuLinks}>
       <article
         className="blog-post"
         itemScope
@@ -81,6 +82,10 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        menuLinks {
+          name
+          link
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {

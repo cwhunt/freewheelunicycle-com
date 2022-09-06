@@ -8,11 +8,12 @@ import Seo from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const menuLinks = data.site.siteMetadata.menuLinks
   const socialLinks = data.site.siteMetadata.socialLinks
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle} socialLinks={socialLinks}>
+      <Layout location={location} title={siteTitle} menuLinks={menuLinks} socialLinks={socialLinks}>
         <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
@@ -24,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle} socialLinks={socialLinks}>
+    <Layout location={location} title={siteTitle}  menuLinks={menuLinks} socialLinks={socialLinks}>
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
@@ -76,13 +77,20 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        menuLinks {
+          name
+          link
+        }
         socialLinks {
           name
           url
         }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {fileAbsolutePath: {regex: "//blog//"}}
+    ) {
       nodes {
         excerpt
         fields {

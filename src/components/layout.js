@@ -1,24 +1,39 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-const Layout = ({ location, title, children, socialLinks }) => {
+const Layout = ({ location, title, children, menuLinks, socialLinks }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
 
-  if (isRootPath) {
-    header = (
+  header = (
+    <>
       <h1 className="main-heading">
         <Link to="/">{title}</Link>
       </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+      <div>
+      { menuLinks ? 
+      <nav>
+        <ul style={{ display: "flex", flex: 1 }}>
+          {menuLinks.map(link => (
+            <li
+              key={link.name}
+              style={{
+                listStyleType: `none`,
+                padding: `1rem`,
+              }}
+            >
+              <Link style={{ color: `black` }} to={link.link}>
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav> : <span />
+      }
+    </div>
+    </>
+  )
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
