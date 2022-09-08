@@ -14,9 +14,10 @@ const VideoTemplate = ({
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const menuLinks = site.siteMetadata.menuLinks
+  const socialLinks = site.siteMetadata.socialLinks
 
   return (
-    <Layout location={location} title={siteTitle} menuLinks={menuLinks}>
+    <Layout location={location} title={siteTitle} menuLinks={menuLinks} socialLinks={socialLinks}>
       <article
         className="video"
         itemScope
@@ -44,10 +45,6 @@ const VideoTemplate = ({
             </>))} </p>
           </div>
         }
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
     </Layout>
   )
@@ -74,6 +71,10 @@ export const pageQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socialLinks {
+          name
+          url
         }
       }
     }

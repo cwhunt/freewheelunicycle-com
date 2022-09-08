@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 // Components
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 
 
@@ -16,9 +15,10 @@ const Tags = ({ pageContext, data, location }) => {
   } tagged with "${tag}"`
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const menuLinks = data.site.siteMetadata.menuLinks
+  const socialLinks = data.site.siteMetadata.socialLinks
 
   return (
-    <Layout location={location} title={siteTitle} menuLinks={menuLinks}>
+    <Layout location={location} title={siteTitle} menuLinks={menuLinks} socialLinks={socialLinks}>
       <article
         className="page"
         itemScope
@@ -41,10 +41,6 @@ const Tags = ({ pageContext, data, location }) => {
           </ul>
         <Link to="/tags">All tags</Link>
         </section>
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
     </Layout>
   )
@@ -83,6 +79,10 @@ export const pageQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socialLinks {
+          name
+          url
         }
       }
     }

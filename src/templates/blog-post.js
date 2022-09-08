@@ -14,9 +14,10 @@ const BlogPostTemplate = ({
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const menuLinks = site.siteMetadata.menuLinks
+  const socialLinks = site.siteMetadata.socialLinks
 
   return (
-    <Layout location={location} title={siteTitle} menuLinks={menuLinks}>
+    <Layout location={location} title={siteTitle} menuLinks={menuLinks} socialLinks={socialLinks}>
       <article
         className="blog-post"
         itemScope
@@ -100,6 +101,10 @@ export const pageQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socialLinks {
+          name
+          url
         }
       }
     }

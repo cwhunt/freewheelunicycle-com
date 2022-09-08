@@ -1,7 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -11,9 +10,10 @@ const PageTemplate = ({
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
   const menuLinks = site.siteMetadata.menuLinks
+  const socialLinks = site.siteMetadata.socialLinks
 
   return (
-    <Layout location={location} title={siteTitle} menuLinks={menuLinks}>
+    <Layout location={location} title={siteTitle} menuLinks={menuLinks} socialLinks={socialLinks}>
       <article
         className="page"
         itemScope
@@ -26,10 +26,6 @@ const PageTemplate = ({
           dangerouslySetInnerHTML={{ __html: page.html }}
           itemProp="articleBody"
         />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
     </Layout>
   )
@@ -56,6 +52,10 @@ export const pageQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socialLinks {
+          name
+          url
         }
       }
     }
